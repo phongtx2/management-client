@@ -1,0 +1,45 @@
+.ant-card,
+.ant-card-body,
+.ant-card-cover img {
+  border-radius: 0 !important;
+}
+.ant-card {
+  border: 2px rgba(168, 35, 18, 1);
+}
+.ant-card-cover {
+  margin-inline: 0 !important;
+}
+.ant-card-body {
+  background-color: rgba(168, 35, 18, 1);
+}
+
+.ant-card-meta-title,
+.ant-card-meta-description {
+  justify-content: center;
+  display: flex;
+  color: rgba(255, 176, 81, 1) !important;
+}
+.ant-card-meta-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+.ant-card-meta-description {
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+}
+.hover-button {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-button:hover {
+  opacity: 1;
+}
+/* .hover-button {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-button:hover {
+  opacity: 1;
+} */
