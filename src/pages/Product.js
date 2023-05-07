@@ -1,23 +1,23 @@
 import { useParams } from "react-router-dom";
 import { Layout, Typography, Row, Col, Image, Button, Spin } from "antd";
-import { getBookById } from "../api/book";
+import { getProductById } from "../api/product";
 import { useEffect, useState } from "react";
 import { DownloadOutlined } from "@ant-design/icons";
 
-export const Book = () => {
-  const [book, setBook] = useState({});
+export const Product = () => {
+  const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
-    getBookById(id)
+    getProductById(id)
       .then(({ data }) => {
-        setBook(data.book);
+        setProduct(data.product);
       })
       .finally(() => setLoading(false));
   }, [id]);
-  console.log(book);
+  console.log(product);
   if (loading)
     return (
       <div
@@ -26,8 +26,7 @@ export const Book = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-        }}
-      >
+        }}>
         <Spin size="large" />;
       </div>
     );
@@ -42,38 +41,38 @@ export const Book = () => {
           background: "#fafafa",
           display: "flex",
           alignItems: "center",
-        }}
-      >
-        <Typography.Title level={3}>Book Management</Typography.Title>
+        }}>
+        <Typography.Title level={3}>Product Management</Typography.Title>
       </Layout.Header>
       <Layout.Content style={{ marginTop: "4.1rem" }}>
         <Row>
           <Col span={12} style={{ display: "flex", justifyContent: "center" }}>
-            <Image src={book.image} height={660} />
+            <Image src={product.image} height={660} />
           </Col>
           <Col span={12} style={{ padding: "2rem" }}>
             <Row gutter={[16, 16]}>
               <Col span={24}>
                 <Typography.Title level={3}>Name</Typography.Title>
-                <Typography.Text>{book.name}</Typography.Text>
+                <Typography.Text>{product.name}</Typography.Text>
               </Col>
               <Col span={24}>
                 <Typography.Title level={3}>Category</Typography.Title>
                 <Typography.Paragraph>
-                  {book?.Category?.name}
+                  {product?.Category?.name}
                 </Typography.Paragraph>
               </Col>
               <Col span={24}>
                 <Typography.Title level={3}>Description</Typography.Title>
-                <Typography.Paragraph>{book.description}</Typography.Paragraph>
+                <Typography.Paragraph>
+                  {product.description}
+                </Typography.Paragraph>
               </Col>
               <Col span={24}>
                 <Button
                   type="primary"
                   icon={<DownloadOutlined />}
-                  href={book.downloadUrl}
-                >
-                  Download Book
+                  href={product.downloadUrl}>
+                  Download Product
                 </Button>
               </Col>
             </Row>

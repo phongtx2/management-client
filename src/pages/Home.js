@@ -1,12 +1,12 @@
 import { Layout, Typography, Card, Row, Col, Spin, Input, Button } from "antd";
-import { getBooks } from "../api/book";
+import { getProducts } from "../api/product";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const [books, setBooks] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pagingState, setPagingState] = useState({
     currentPage: 1,
@@ -15,16 +15,16 @@ export const Home = () => {
   });
   const [filter, setFilter] = useState("");
 
-  const onFilter = (book) =>
-    book.name.includes(filter) ||
-    book.Category.name.includes(filter) ||
+  const onFilter = (product) =>
+    product.name.includes(filter) ||
+    product.Category.name.includes(filter) ||
     !filter;
 
   useEffect(() => {
     setLoading(true);
-    getBooks(pagingState)
+    getProducts(pagingState)
       .then(({ data }) => {
-        setBooks(data.books);
+        setProducts(data.products);
         setPagingState((prev) => ({
           ...prev,
           currentPage: Number(data.currentPage),
@@ -71,11 +71,11 @@ export const Home = () => {
               onChange={(e) => setFilter(e.target.value)}
             />
           </Col>
-          {books.filter(onFilter).map((book) => (
+          {products.filter(onFilter).map((product) => (
             <Col
               span={6}
-              key={book.id}
-              onClick={() => navigate(`/book/${book.id}`)}>
+              key={product.id}
+              onClick={() => navigate(`/product/${product.id}`)}>
               <Card
                 style={{
                   height: "100%",
@@ -94,15 +94,15 @@ export const Home = () => {
                     <img
                       style={{ width: "100%" }}
                       alt="example"
-                      src={book.image}
+                      src={product.image}
                     />
                     {/* <Button className="hover-button">Click me</Button> */}
                   </div>
                 }>
                 <Card.Meta
                   style={{ position: "relative", bottom: 0 }}
-                  title={book.name}
-                  description={book.Category.name}
+                  title={product.name}
+                  description={product.Category.name}
                 />
               </Card>
             </Col>
