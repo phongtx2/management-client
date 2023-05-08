@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.fa-logo {
+  position: absolute;
+  right: 293px;
+}
+.in-logo {
+  position: absolute;
+  right: 220px;
+}
+.gm-logo {
+  position: absolute;
+  right: 0px;
+}

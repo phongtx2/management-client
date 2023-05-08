@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Layout, Typography, Row, Col, Image, Button, Spin } from "antd";
+import { Layout, Typography, Row, Col, Image, Spin } from "antd";
 import { getProductById } from "../api/product";
 import { useEffect, useState } from "react";
 import { Header } from "../components/Header";

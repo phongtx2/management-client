@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { Header } from "../components/Header";
 import Category from "../components/Category";
+import sp from "../assets/sp.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -52,17 +53,30 @@ export const Home = () => {
       <Header />
       <Layout>
         <Layout.Content
-          style={{ marginTop: "6rem", background: "rgba(168,35,18,1)" }}>
+          style={{
+            marginTop: "6rem",
+            background: "rgba(168,35,18,1)",
+          }}>
           <Category categories={categories} setFilter={setFilter} />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+            }}>
+            <img src={sp} alt="logo" height="100px" />
+          </div>
           <Row gutter={[24, 24]} style={{ padding: "1rem" }}>
             {products.map((product) => (
               <Col
                 span={6}
+                style={{ justifyContent: "center", display: "flex" }}
                 key={product.id}
                 onClick={() => navigate(`/product/${product.id}`)}>
                 <Card
                   style={{
-                    height: "100%",
+                    height: "85%",
+                    width: "85%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -76,11 +90,10 @@ export const Home = () => {
                         width: "100%",
                       }}>
                       <img
-                        style={{ width: "100%" }}
+                        style={{ width: "300px", height: "455px" }}
                         alt="product"
                         src={product.image}
                       />
-                      {/* <Button className="hover-button">Click me</Button> */}
                     </div>
                   }>
                   <Card.Meta

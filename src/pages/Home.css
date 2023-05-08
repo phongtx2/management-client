@@ -1,7 +1,6 @@
 .ant-card,
-.ant-card-body,
 .ant-card-cover img {
-  border-radius: 0 !important;
+  border-radius: 5% !important;
 }
 .ant-card {
   border: 2px rgba(168, 35, 18, 1);

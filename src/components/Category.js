@@ -13,7 +13,12 @@ const Category = (props) => {
               className="swiper-slide"
               onClick={() => handleClick(category.id)}>
               <div className="thumbnail">
-                <img height={200} alt="product" src={category.image} />
+                <img
+                  height={200}
+                  width={150}
+                  alt="product"
+                  src={category.image}
+                />
               </div>
               <h4 className="slide-title">
                 <div>{category.name}</div>
