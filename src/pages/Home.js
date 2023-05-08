@@ -10,13 +10,9 @@ export const Home = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(0);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const onFilter = (product) =>
-    product.name.includes(filter) ||
-    product.Category.name.includes(filter) ||
-    !filter;
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -29,14 +25,14 @@ export const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    getProducts(page)
+    getProducts(page, filter)
       .then(({ data }) => {
         setProducts(data.products);
         setTotalPages(data.total);
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [filter, page]);
 
   if (loading)
     return (
@@ -57,15 +53,9 @@ export const Home = () => {
       <Layout>
         <Layout.Content
           style={{ marginTop: "6rem", background: "rgba(168,35,18,1)" }}>
-          <Category categories={categories} />
+          <Category categories={categories} setFilter={setFilter} />
           <Row gutter={[24, 24]} style={{ padding: "1rem" }}>
-            {/* <Col span={24} style={{ margin: "1rem 0" }}>
-            <Input
-              placeholder="Filter"
-              onChange={(e) => setFilter(e.target.value)}
-            />
-          </Col> */}
-            {products.filter(onFilter).map((product) => (
+            {products.map((product) => (
               <Col
                 span={6}
                 key={product.id}
@@ -87,7 +77,7 @@ export const Home = () => {
                       }}>
                       <img
                         style={{ width: "100%" }}
-                        alt="example"
+                        alt="product"
                         src={product.image}
                       />
                       {/* <Button className="hover-button">Click me</Button> */}

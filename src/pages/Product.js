@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { Layout, Typography, Row, Col, Image, Button, Spin } from "antd";
 import { getProductById } from "../api/product";
 import { useEffect, useState } from "react";
-import { DownloadOutlined } from "@ant-design/icons";
 import { Header } from "../components/Header";
+import "./Product.css";
 
 export const Product = () => {
   const [product, setProduct] = useState({});
@@ -33,12 +33,19 @@ export const Product = () => {
     );
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout>
       <Header />
 
-      <Layout.Content style={{ marginTop: "4.1rem" }}>
+      <Layout.Content
+        style={{ marginTop: "6rem", background: "rgba(38, 66, 52, 1)" }}>
         <Row>
-          <Col span={12} style={{ display: "flex", justifyContent: "center" }}>
+          <Col
+            span={12}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "30px 0",
+            }}>
             <Image src={product.image} height={660} />
           </Col>
           <Col span={12} style={{ padding: "2rem" }}>
@@ -59,14 +66,14 @@ export const Product = () => {
                   {product.description}
                 </Typography.Paragraph>
               </Col>
-              <Col span={24}>
+              {/* <Col span={24}>
                 <Button
                   type="primary"
                   icon={<DownloadOutlined />}
                   href={product.downloadUrl}>
                   Download Product
                 </Button>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>

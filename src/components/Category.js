@@ -1,22 +1,22 @@
 import "./Category.css";
 const Category = (props) => {
+  const handleClick = (a) => {
+    props.setFilter(a);
+    console.log(a);
+  };
   return (
     <div className="product-category">
       <div className="widget-container">
         {props.categories?.map((category) => (
           <>
-            <div className="swiper-slide">
-              <a href="/" className="thumbnail">
-                <img
-                  loading="lazy"
-                  alt="Tee"
-                  src="https://3bich.vn/wp-content/uploads/2023/02/z4124356917940_72ab4867fdb4470209bc059cde93a70f.jpg"
-                  className="webpexpress-processed"
-                  height="200px"
-                />
-              </a>
+            <div
+              className="swiper-slide"
+              onClick={() => handleClick(category.id)}>
+              <div className="thumbnail">
+                <img height={200} alt="product" src={category.image} />
+              </div>
               <h4 className="slide-title">
-                <a href="/">{category.name}</a>
+                <div>{category.name}</div>
               </h4>
             </div>
           </>
