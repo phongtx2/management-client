@@ -3,6 +3,7 @@ import { Layout, Typography, Row, Col, Image, Button, Spin } from "antd";
 import { getProductById } from "../api/product";
 import { useEffect, useState } from "react";
 import { DownloadOutlined } from "@ant-design/icons";
+import { Header } from "../components/Header";
 
 export const Product = () => {
   const [product, setProduct] = useState({});
@@ -33,17 +34,8 @@ export const Product = () => {
 
   return (
     <Layout style={{ height: "100vh" }}>
-      <Layout.Header
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-          background: "#fafafa",
-          display: "flex",
-          alignItems: "center",
-        }}>
-        <Typography.Title level={3}>Product Management</Typography.Title>
-      </Layout.Header>
+      <Header />
+
       <Layout.Content style={{ marginTop: "4.1rem" }}>
         <Row>
           <Col span={12} style={{ display: "flex", justifyContent: "center" }}>
